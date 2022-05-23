@@ -23,7 +23,7 @@ function App() {
           // @ts-ignore：无法被执行的代码的错误
           className={styles.appLogo}
         />
-        <h1> Robot is amazing!</h1>
+        <h1> 機器人真的是太酷了~! Go Rock It</h1>
       </div>
       <div
         // @ts-ignore：无法被执行的代码的错误
