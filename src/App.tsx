@@ -1,16 +1,34 @@
 import React from "react";
 import "./App.css";
-//載入假資料
+// 載入Logo
+import logo from "./assets/images/logo.svg";
+// 載入假資料
 import robots from "./mockdata/robots.json";
-//導入組元件
+// 導入組元件
 import Robot from "./components/Robot";
-//作為模組加載
+// 作為全局樣式加載
 import styles from "./App.module.css";
 
 function App() {
   return (
+    // @ts-ignore：无法被执行的代码的错误
     <div className={styles.app}>
-      <div className={styles.robotList}>
+      <div
+        // @ts-ignore：无法被执行的代码的错误
+        className={styles.appHeader}
+      >
+        <img
+          src={logo}
+          alt="logo"
+          // @ts-ignore：无法被执行的代码的错误
+          className={styles.appLogo}
+        />
+        <h1> Robot is amazing!</h1>
+      </div>
+      <div
+        // @ts-ignore：无法被执行的代码的错误
+        class={styles.robotList}
+      >
         {robots.map((r) => (
           <Robot id={r.id} email={r.email} name={r.name} />
         ))}
