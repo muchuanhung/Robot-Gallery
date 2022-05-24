@@ -8,9 +8,30 @@ import robots from "./mockdata/robots.json";
 import Robot from "./components/Robot";
 // 作為全局樣式加載
 import styles from "./App.module.css";
+import ShoppingCart from "./components/ShoppingCart";
 
-function App() {
-  return (
+interface Props {}
+
+interface State {
+  robotGallery: any[];
+}
+
+class App extends React.Component<Props, State> {
+  constructor(props) {
+    super(props);
+    this.state = {
+      robotGallery: [],
+    };
+  }
+
+  // 導入API
+  componentDidMount() {
+    fetch("https://jsonplaceholder.typicode.com/users")
+      .then((response) => response.json())
+      .then((data) => this.setState({ robotGallery: data }));
+  }
+
+  render() {
     // @ts-ignore：无法被执行的代码的错误
     <div className={styles.app}>
       <div
@@ -25,6 +46,7 @@ function App() {
         />
         <h1> 機器人真的是太酷了~! Go Rock It</h1>
       </div>
+      <ShoppingCart />
       <div
         // @ts-ignore：无法被执行的代码的错误
         class={styles.robotList}
@@ -33,8 +55,8 @@ function App() {
           <Robot id={r.id} email={r.email} name={r.name} />
         ))}
       </div>
-    </div>
-  );
+    </div>;
+  }
 }
 
 export default App;
