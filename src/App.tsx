@@ -14,6 +14,7 @@ interface Props {}
 
 interface State {
   robotGallery: any[];
+  count: number;
 }
 
 class App extends React.Component<Props, State> {
@@ -21,6 +22,7 @@ class App extends React.Component<Props, State> {
     super(props);
     this.state = {
       robotGallery: [],
+      count: 0,
     };
   }
 
@@ -46,6 +48,29 @@ class App extends React.Component<Props, State> {
         />
         <h1> 機器人真的是太酷了~! Go Rock It</h1>
       </div>
+      <button
+        onClick={() => {
+          this.setState(
+            (preState, preProps) => {
+              return { count: preState.count + 1 };
+            },
+            () => {
+              console.log("count ", this.state.count);
+            }
+          );
+          this.setState(
+            (preState, preProps) => {
+              return { count: preState.count + 1 };
+            },
+            () => {
+              console.log("count ", this.state.count);
+            }
+          );
+        }}
+      >
+        Click
+      </button>
+      <span>count: {this.state.count}</span>
       <ShoppingCart />
       <div
         // @ts-ignore：无法被执行的代码的错误
